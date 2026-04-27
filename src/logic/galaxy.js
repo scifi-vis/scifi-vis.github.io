@@ -19,11 +19,14 @@ import { OrbitControls } from "three/addons/controls/OrbitControls.js";
 
 let camera, scene, renderer, controls;
 const height = 400;
+const width = function (){
+  return window.innerWidth;
+}
 
 function init() {
   camera = new THREE.PerspectiveCamera(
     50,
-    window.innerWidth / height,
+    width() / height,
     0.1,
     100,
   );
@@ -73,7 +76,7 @@ function init() {
 
   renderer = new THREE.WebGPURenderer({ antialias: true });
   renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setSize(window.innerWidth, height);
+  renderer.setSize(width(), height);
   renderer.setAnimationLoop(animate);
   renderer.inspector = new Inspector();
   document.getElementById("header").appendChild(renderer.domElement);
@@ -121,10 +124,10 @@ function init() {
 }
 
 function onWindowResize() {
-  camera.aspect = window.innerWidth / height;
+  camera.aspect = width() / height;
   camera.updateProjectionMatrix();
 
-  renderer.setSize(window.innerWidth, height);
+  renderer.setSize(width(), height);
 }
 
 function animate() {

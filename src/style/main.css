@@ -27,6 +27,8 @@ header p {
   top: 185px;
   left: 0;
   right: 0;
+  padding-left:10px;
+  padding-right:10px;
   margin-inline: auto;
   width: fit-content;
   font-size: 1.2rem;
@@ -127,7 +129,19 @@ footer {
   position: absolute !important;
 }
 
+#profiler-toggle {
+  top: 350px !important;
+}
+
+#profiler-mini-panel { 
+  top: 390px !important;
+}
+
 #toggle-icon {
   display: none !important;
 }
 
+#show-controls {
+  font-size: 10px;
+  color: gray
+}

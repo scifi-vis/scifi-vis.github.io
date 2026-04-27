@@ -76,17 +76,17 @@ function init() {
   renderer.setSize(window.innerWidth, height);
   renderer.setAnimationLoop(animate);
   renderer.inspector = new Inspector();
-  document.getElementById('header').appendChild(renderer.domElement);
+  document.getElementById("header").appendChild(renderer.domElement);
 
   controls = new OrbitControls(camera, renderer.domElement);
   controls.enableDamping = true;
   controls.minDistance = 0.1;
   controls.maxDistance = 50;
-  
+
   const keysBkp = structuredClone(controls.mouseButtons);
-  
+
   function disableMouse(controls) {
-    Object.keys(controls.mouseButtons).forEach(k => {
+    Object.keys(controls.mouseButtons).forEach((k) => {
       controls.mouseButtons[k] = null;
     });
     controls.enablePan = false;
@@ -96,45 +96,36 @@ function init() {
   disableMouse(controls);
   window.addEventListener("resize", onWindowResize);
 
-  const gui = renderer.inspector.createParameters("Parameters");
-  gui.parameters.isVisible = false;
-  gui.add(size, "value", 0, 1, 0.001).name("size");
-  gui
-    .addColor(
-      { color: colorInside.value.getHex(THREE.SRGBColorSpace) },
-      "color",
-    )
-    .name("Color Inside")
-    .onChange(function (value) {
-      colorInside.value.set(value);
-    });
-
-  gui
-    .addColor(
-      { color: colorOutside.value.getHex(THREE.SRGBColorSpace) },
-      "color",
-    )
-    .name("Color Outside")
-    .onChange(function (value) {
-      colorOutside.value.set(value);
-    });
-  gui
-    .add({ switch: false }, "switch")
-    .name("Mouse Interaction (zoom, pan)")
-    .onChange(function (value) {
-      if (value) {
-        controls.mouseButtons = keysBkp;
-        controls.enablePan = true;
-        controls.enableZoom = true;
-      } else {
-        disableMouse(controls);
-      }
-    });
-  console.log(gui)
+  return {
+    size: { v: size },
+    colori: {
+      v: { color: colorInside.value.getHex(THREE.SRGBColorSpace) },
+      f: function (value) {
+        colorInside.value.set(value);
+      },
+    },
+    coloro: {
+      v: { color: colorOutside.value.getHex(THREE.SRGBColorSpace) },
+      f: function (value) {
+        colorOutside.value.set(value);
+      },
+    },
+    mouse: {
+      f: function (value) {
+        if (value) {
+          controls.mouseButtons = keysBkp;
+          controls.enablePan = true;
+          controls.enableZoom = true;
+        } else {
+          disableMouse(controls);
+        }
+      },
+    },
+  };
 }
 
 function onWindowResize() {
-  console.log("called")
+  console.log("called");
   camera.aspect = window.innerWidth / height;
   camera.updateProjectionMatrix();
 
@@ -146,4 +137,33 @@ function animate() {
   renderer.render(scene, camera);
 }
 
-init();
+function addGui(menus) {
+  const gui = renderer.inspector.createParameters("Parameters");
+  gui.add(menus.size.v, "value", 0, 1, 0.001).name("size");
+  gui
+    .addColor(menus.colori.v, "color")
+    .name("Color Inside")
+    .onChange(menus.colori.f);
+  gui
+    .addColor(menus.coloro.v, "color")
+    .name("Color Outside")
+    .onChange(menus.coloro.f);
+  gui
+    .add({ switch: false }, "switch")
+    .name("Interaction (zoom, pan)")
+    .onChange(menus.mouse.f);
+}
+
+const menus = init();
+let menu = false;
+
+setTimeout(()=> {
+  document.getElementById('profiler-toggle').addEventListener('click', (e)=>{
+    e.preventDefault();
+    if (!menu) {
+      addGui(menus);
+      menu = true; 
+    } 
+  })
+  document.getElementById('profiler-panel').remove();
+}, 1000)

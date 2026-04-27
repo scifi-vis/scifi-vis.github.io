@@ -83,12 +83,8 @@ function init() {
   controls.minDistance = 0.1;
   controls.maxDistance = 50;
 
-  const keysBkp = structuredClone(controls.mouseButtons);
-
   function disableMouse(controls) {
-    Object.keys(controls.mouseButtons).forEach((k) => {
-      controls.mouseButtons[k] = null;
-    });
+    controls.mouseButtons = {LEFT: null, MIDDLE: null, RIGHT: null};
     controls.enablePan = false;
     controls.enableZoom = false;
   }
@@ -113,7 +109,7 @@ function init() {
     mouse: {
       f: function (value) {
         if (value) {
-          controls.mouseButtons = keysBkp;
+          controls.mouseButtons = {LEFT: 0, MIDDLE: 1, RIGHT: 2};
           controls.enablePan = true;
           controls.enableZoom = true;
         } else {
@@ -125,7 +121,6 @@ function init() {
 }
 
 function onWindowResize() {
-  console.log("called");
   camera.aspect = window.innerWidth / height;
   camera.updateProjectionMatrix();
 
@@ -157,13 +152,17 @@ function addGui(menus) {
 const menus = init();
 let menu = false;
 
-setTimeout(()=> {
-  document.getElementById('profiler-toggle').addEventListener('click', (e)=>{
-    e.preventDefault();
-    if (!menu) {
-      addGui(menus);
-      menu = true; 
-    } 
-  })
-  document.getElementById('profiler-panel').remove();
-}, 1000)
+const int = setInterval(()=> {
+  const toggle = document.getElementById('profiler-toggle');
+  if (toggle) {
+    toggle.addEventListener('click', (e)=>{
+      e.preventDefault();
+      if (!menu) {
+        addGui(menus);
+        menu = true; 
+      } 
+    })
+    document.getElementById('profiler-panel').remove();
+    clearInterval(int)
+  }
+}, 5);

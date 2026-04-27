@@ -20,6 +20,7 @@ header h1 {
   width: fit-content;
   font-size: 2.8rem;
   margin-bottom: 10px;
+  pointer-events: none;
 }
 
 header p {
@@ -33,6 +34,7 @@ header p {
   width: fit-content;
   font-size: 1.2rem;
   opacity: 0.85;
+  pointer-events: none;
 }
 
 nav {

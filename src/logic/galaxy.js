@@ -148,7 +148,7 @@ function addGui(menus) {
     .onChange(menus.coloro.f);
   gui
     .add({ switch: false }, "switch")
-    .name("Interaction (zoom, pan)")
+    .name("Mouse/Trackpad Interaction (zoom, pan)")
     .onChange(menus.mouse.f);
 }
 

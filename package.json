@@ -1,0 +1,19 @@
+{
+    "name": "scifi-vis",
+    "version": "0.0.1",
+    "description": "conference workshop website",
+    "type": "module",
+    "scripts": {
+        "dev": "vite --port 3000",
+        "build": "vite build"
+    },
+    "dependencies": {
+        "@fortawesome/fontawesome-free": "6.7.2",
+        "flag-icons": "^7.5.0",
+        "three": "^0.184.0",
+        "vite-plugin-singlefile": "^2.3.3"
+    },
+    "devDependencies": {
+        "vite": "^6.0.0"
+    }
+}

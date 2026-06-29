@@ -16,6 +16,7 @@ import {
 
 import { Inspector } from "three/addons/inspector/Inspector.js";
 import { OrbitControls } from "three/addons/controls/OrbitControls.js";
+import "flag-icons/css/flag-icons.min.css";
 
 let camera, scene, renderer, controls;
 const height = 400;

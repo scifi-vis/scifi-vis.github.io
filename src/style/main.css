@@ -97,6 +97,13 @@ footer {
   opacity: 0.7;
 }
 
+.speaker-pic img {
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #7aa2ff;
+  margin-bottom: 10px;
+}
+
 @media screen and (width >= 900px) {
   .organizers {
     display: grid;
@@ -104,6 +111,22 @@ footer {
     gap: 30px;
     margin-top: 30px;
     text-align: center;
+  }
+
+  .speaker-box {
+    display: flex;flex-direction:row;
+  }
+
+  .speaker-info {
+    width:75%;
+  }
+
+  .speaker-pic {
+    width:220px;
+    img {
+      width: 200px;
+      height: 200px;
+    }
   }
 }
 
@@ -115,6 +138,19 @@ footer {
     margin-top: 30px;
     text-align: center;
   }
+
+  .speaker-box {
+    display:block;
+  }
+
+  .speaker-pic {
+    text-align: center;
+    img {
+      width: 300px;
+      height: 300px;
+    }
+  }
+
 }
 
 .organizers {

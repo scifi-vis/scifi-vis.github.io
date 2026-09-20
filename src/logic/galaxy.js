@@ -22,7 +22,7 @@ import "@fortawesome/fontawesome-free"
 let camera, scene, renderer, controls;
 const height = 400;
 const width = function (){
-  return window.innerWidth;
+  return window.visualViewport.width;
 }
 
 function init() {

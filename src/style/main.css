@@ -146,8 +146,8 @@ footer {
   .speaker-pic {
     text-align: center;
     img {
-      width: 300px;
-      height: 300px;
+      width: 80%;
+      max-width: 300px;
     }
   }
 
@@ -200,14 +200,12 @@ footer {
 }
 
 .rw {
-    position: relative;
-    font-family: 'Source Sans Pro Topnav', sans-serif;
-    background-color: #12182b;
-    color: #fff;
-    border-radius: 5px;
-    width: 100%;
-    padding: 8px 16px;
-    margin: 0 0 4px;
-    font-size: 16px;
-    text-align: left;
+  font-family: 'Source Sans Pro Topnav', sans-serif;
+  background-color: #12182b;
+  color: #fff;
+  border-radius: 5px;
+  padding: 8px 16px;
+  margin: 0 0 4px;
+  font-size: 16px;
+  text-align: left;
 }

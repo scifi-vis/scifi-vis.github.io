@@ -199,7 +199,7 @@ footer {
   color: gray
 }
 
-.rw {
+.rw, #accepted-papers .paper-entry {
   font-family: 'Source Sans Pro Topnav', sans-serif;
   background-color: #12182b;
   color: #fff;
@@ -208,4 +208,28 @@ footer {
   margin: 0 0 4px;
   font-size: 16px;
   text-align: left;
+}
+
+details > summary {
+  display: block;
+  cursor: pointer;
+  list-style: none;
+}
+
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+details > summary h2 {
+  display: inline-block;
+}
+
+details > summary::after {
+  content: "Click to see more";
+  font-size: 0.8em;
+  padding-left: 2em;
+}
+
+details[open] > summary::after {
+  content: "Click to show less";
 }

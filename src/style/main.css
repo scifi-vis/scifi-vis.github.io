@@ -222,11 +222,11 @@ details > summary h2 {
 }
 
 details > summary::after {
-  content: "Show more";
+  content: "more";
   font-size: 0.8em;
   padding-left: 2em;
 }
 
 details[open] > summary::after {
-  content: "Show less";
+  content: "less";
 }

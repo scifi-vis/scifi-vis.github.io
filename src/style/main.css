@@ -105,6 +105,10 @@ footer {
 }
 
 @media screen and (width >= 900px) {
+  .short-title {
+    display: none;
+  }
+
   .organizers {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -132,6 +136,10 @@ footer {
 }
 
 @media screen and (width < 900px) {
+  .long-title {
+    display: none;
+  }
+
   .organizers {
     display: block;
     grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -239,3 +247,4 @@ summary h3 {
   display: inline;
   margin: 0;
 }
+
